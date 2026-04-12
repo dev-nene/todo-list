@@ -1,0 +1,21 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "A Todo List application built as part of The Odin Project curriculum.   The app allows users to create, organize, and manage tasks across multiple projects, with persistent data storage using localStorage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-nene/todo-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dev-nene/todo-list/issues"
+  },
+  "homepage": "https://github.com/dev-nene/todo-list#readme"
+}
