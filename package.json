@@ -4,7 +4,8 @@
   "description": "A Todo List application built as part of The Odin Project curriculum.   The app allows users to create, organize, and manage tasks across multiple projects, with persistent data storage using localStorage.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -13,9 +14,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/dev-nene/todo-list/issues"
   },
-  "homepage": "https://github.com/dev-nene/todo-list#readme"
+  "homepage": "https://github.com/dev-nene/todo-list#readme",
+  "devDependencies": {
+    "css-loader": "^7.1.4",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.6",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.106.1",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3"
+  }
 }
