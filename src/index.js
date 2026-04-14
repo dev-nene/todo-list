@@ -1,11 +1,9 @@
 import "./styles.css";
-import { createTodo, getTodos, addTodo  } from "./models/todo.js";
+import { renderTodos } from "./dom/render.js";
+import { initMainListener, initDialogListener } from "./dom/events.js";
 
 
-const todo = createTodo("Gym", "Leg day", "2026-04-14", "high");
+initMainListener();
+initDialogListener();
+renderTodos();
 
-addTodo(todo);
-
-console.log(getTodos());
-
-console.log("Hello");

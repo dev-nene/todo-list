@@ -11,20 +11,37 @@
       <div class="sidebar__user">
         <h2>John</h2>
       </div>
-      <button>Add Task</button>
+      <button class="addTodo-btn">Add Task</button>
 
       <button>All todos</button>
 
       <button>Today</button>
       <button>This week</button>
       <button>This month</button>
-      
+
       <button>Completed</button>
 
       <button>Default</button>
       <button>Project dynamic render</button>
     </div>
     <div class="main"></div>
+    <dialog class="todo-dialog">
+      <form method="dialog" class="todo-form">
+        <input type="text" id="title" name="title" placeholder="Title">
+        <textarea name="desc" id="desc" placeholder="Todo description"></textarea>
+        <input type="date" name="dueDate" id="dueDate">
+
+        <select name="priority" id="priority">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+
+        <button type="submit" class="create-btn">Create</button>
+        <button type="button" class="cancel-btn">Cancel</button>
+      </form>
+
+    </dialog>
   </div>
 </body>
 </html>

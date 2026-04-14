@@ -1,3 +1,4 @@
+import { addTodo, createTodo } from "../models/todo.js";
 import { setTodos } from "../storage/storage.js";
 
 function checkTodo(todos, e) {
@@ -21,6 +22,22 @@ function deleteTodo(todos, e) {
   setTodos(updatedTodos);
 }
 
-function expandTodo(todos, e) {}
+function editTodo(todos, e) {
+  
+}
 
-export { checkTodo, deleteTodo, expandTodo };
+function expandTodo(todos, e) {
+  
+}
+
+function makeTodo() {
+    const title = document.querySelector("#title").value;
+    const desc = document.querySelector("#desc").value;
+    const dueDate = document.querySelector("#dueDate").value;
+    const priority = document.querySelector("#priority").value;
+    
+    const todo = createTodo(title, desc, dueDate, priority);
+    addTodo(todo)
+}
+
+export { checkTodo, deleteTodo, expandTodo, editTodo, makeTodo };
