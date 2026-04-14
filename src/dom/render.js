@@ -23,6 +23,17 @@ function renderTodos(projectName = "default") {
 
     const priority = document.createElement("p");
     priority.textContent = todo.priority;
+    switch (todo.priority) {
+      case "high":
+        itemDiv.classList.add("high");
+        break;
+      case "medium":
+        itemDiv.classList.add("medium");
+        break;
+      case "low":
+        itemDiv.classList.add("low");
+        break;
+    }
 
     const projectName = document.createElement("p");
     projectName.textContent = todo.projectName;
@@ -31,6 +42,9 @@ function renderTodos(projectName = "default") {
     completed.type = "checkbox";
     completed.checked = todo.completed;
     completed.dataset.id = todo.id;
+    if (todo.completed) {
+      itemDiv.classList.add("completed-todo");
+    }
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "EDIT";
@@ -42,14 +56,23 @@ function renderTodos(projectName = "default") {
     delBtn.classList.add("delBtn");
     delBtn.dataset.id = todo.id;
 
-    itemDiv.appendChild(completed);
-    itemDiv.appendChild(title);
-    itemDiv.appendChild(dueDate);
-    itemDiv.appendChild(desc);
-    itemDiv.appendChild(priority);
-    itemDiv.appendChild(projectName);
-    itemDiv.appendChild(editBtn);
-    itemDiv.appendChild(delBtn);
+    const divButtons = document.createElement("div");
+    divButtons.classList.add("div-btn");
+    divButtons.appendChild(editBtn);
+    divButtons.appendChild(delBtn);
+
+    const divContent = document.createElement("div");
+    divContent.classList.add("div-content");
+
+    divContent.appendChild(completed);
+    divContent.appendChild(title);
+    divContent.appendChild(dueDate);
+    divContent.appendChild(desc);
+    divContent.appendChild(priority);
+    divContent.appendChild(projectName);
+
+    itemDiv.appendChild(divContent);
+    itemDiv.appendChild(divButtons);
 
     mainDiv.appendChild(itemDiv);
   });

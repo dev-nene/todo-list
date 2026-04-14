@@ -35,7 +35,8 @@ function makeTodo() {
     const desc = document.querySelector("#desc").value;
     const dueDate = document.querySelector("#dueDate").value;
     const priority = document.querySelector("#priority").value;
-    
+    const form = document.querySelector(".todo-form")
+    form.reset();
     const todo = createTodo(title, desc, dueDate, priority);
     addTodo(todo)
 }
