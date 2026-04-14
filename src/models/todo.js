@@ -1,26 +1,26 @@
 import { createProject } from "./project.js";
+import { getTodos, setTodos } from "../storage/storage.js";
 
-const todos = [];
-
-function getTodos() {
-  return [...todos];
-}
+const todos = getTodos();
 
 function addTodo(todo) {
   todos.push(todo);
+  setTodos(todos);
 }
 
 function createTodo(
   title,
-  notes,
+  desc,
   dueDate,
   priority,
   projectName = "default",
   completed = false,
 ) {
+  const id = crypto.randomUUID();
   return {
+    id,
     title,
-    notes,
+    desc,
     dueDate,
     priority,
     projectName,
@@ -28,4 +28,4 @@ function createTodo(
   };
 }
 
-export { getTodos, addTodo, createTodo };
+export { addTodo, createTodo };
