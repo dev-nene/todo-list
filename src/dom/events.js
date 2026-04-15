@@ -37,7 +37,7 @@ function initMainListener() {
 
     const item = e.target.closest(".todo-item");
     if (item) {
-      expandTodo(item.dataset.id);
+      expandTodo(todos, item);
     }
   });
 }

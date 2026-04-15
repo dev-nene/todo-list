@@ -15,14 +15,10 @@ function renderTodos(projectName = "default") {
     const title = document.createElement("h2");
     title.textContent = todo.title;
 
-    const desc = document.createElement("p");
-    desc.textContent = todo.desc;
-
     const dueDate = document.createElement("p");
     dueDate.textContent = format(todo.dueDate, "yyyy-MM-dd");
 
-    const priority = document.createElement("p");
-    priority.textContent = todo.priority;
+
     switch (todo.priority) {
       case "high":
         itemDiv.classList.add("high");
@@ -34,9 +30,6 @@ function renderTodos(projectName = "default") {
         itemDiv.classList.add("low");
         break;
     }
-
-    const projectName = document.createElement("p");
-    projectName.textContent = todo.projectName;
 
     const completed = document.createElement("input");
     completed.type = "checkbox";
@@ -67,9 +60,6 @@ function renderTodos(projectName = "default") {
     divContent.appendChild(completed);
     divContent.appendChild(title);
     divContent.appendChild(dueDate);
-    divContent.appendChild(desc);
-    divContent.appendChild(priority);
-    divContent.appendChild(projectName);
 
     itemDiv.appendChild(divContent);
     itemDiv.appendChild(divButtons);

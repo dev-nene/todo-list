@@ -75,11 +75,37 @@ function editTodo(todos, event) {
   });
 
   cancelBtn.addEventListener("click", () => {
-  dialog.close();
+    dialog.close();
   });
 }
 
-function expandTodo(todos, e) {}
+function expandTodo(todos, item) {
+  const foundItem = todos.find((todo) => String(todo.id) === item.dataset.id);
+  const isExpanded = item.classList.contains("expanded");
+  if (isExpanded) {
+    item.classList.remove("expanded");
+    const extra = item.querySelector(".extra");
+    if (extra) extra.remove();
+  } else {
+    item.classList.add("expanded");
+
+    const extra = document.createElement("div");
+    extra.classList.add("extra");
+
+    const desc = document.createElement("p");
+    desc.textContent = `Description: ${foundItem.desc}`;
+    const projectName = document.createElement("p");
+    projectName.textContent = `Project: ${foundItem.projectName}`;
+    const priority = document.createElement("p");
+    priority.textContent = `Priority: ${foundItem.priority}`;
+
+    extra.appendChild(desc);
+    extra.appendChild(priority);
+    extra.appendChild(projectName);
+
+    item.appendChild(extra);
+  }
+}
 
 function makeTodo() {
   const title = document.querySelector("#title").value;
