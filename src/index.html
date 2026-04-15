@@ -49,7 +49,23 @@
         <button type="submit" class="create-btn">Create</button>
         <button type="button" class="cancel-btn">Cancel</button>
       </form>
+    </dialog>
 
+    <dialog class="edit-dialog">
+      <form method="dialog" class="edit-form">
+        <input type="text" id="edit-title" name="title" placeholder="Title">
+        <textarea name="desc" id="edit-desc" placeholder="Todo description"></textarea>
+        <input type="date" name="dueDate" id="edit-dueDate">
+
+        <select name="priority" id="edit-priority">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="high">high</option>
+        </select>
+
+        <button type="submit" class="save-btn">Save</button>
+        <button type="button" class="edit-cancel-btn">Cancel</button>
+      </form>
     </dialog>
   </div>
 </body>

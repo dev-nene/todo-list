@@ -1,10 +1,20 @@
 import { createProject } from "./project.js";
 import { getTodos, setTodos } from "../storage/storage.js";
 
-const todos = getTodos();
+let todos = getTodos();
 
 function addTodo(todo) {
   todos.push(todo);
+  setTodos(todos);
+}
+
+function updateTodos(id, title, desc, dueDate, priority) {
+  todos = todos.map((item) => {
+    if (String(item.id) === id) {
+      return { ...item, title, desc, dueDate, priority };
+    }
+    return item;
+  });
   setTodos(todos);
 }
 
@@ -28,4 +38,4 @@ function createTodo(
   };
 }
 
-export { addTodo, createTodo };
+export { addTodo, createTodo, updateTodos };
