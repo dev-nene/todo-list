@@ -1,6 +1,7 @@
+import { addProject, createProject } from "../models/project.js";
 import { addTodo, createTodo, updateTodos } from "../models/todo.js";
-import { setTodos } from "../storage/storage.js";
-import { renderTodos } from "./render.js";
+import { getProjects, setProjects, setTodos } from "../storage/storage.js";
+import { renderProjects, renderTodos } from "./render.js";
 
 function checkTodo(todos, e) {
   const id = e.target.dataset.id;
@@ -95,7 +96,7 @@ function expandTodo(todos, item) {
     const desc = document.createElement("p");
     desc.textContent = `Description: ${foundItem.desc}`;
     const projectName = document.createElement("p");
-    projectName.textContent = `Project: ${foundItem.projectName}`;
+    projectName.textContent = `Project: ${foundItem.project.name}`;
     const priority = document.createElement("p");
     priority.textContent = `Priority: ${foundItem.priority}`;
 
@@ -112,6 +113,7 @@ function makeTodo() {
   const desc = document.querySelector("#desc").value;
   const dueDate = document.querySelector("#dueDate").value;
   const priority = document.querySelector("#priority").value;
+  const projectName = document.querySelector("#project").value;
   const form = document.querySelector(".todo-form");
 
   if (!title) {
@@ -134,9 +136,16 @@ function makeTodo() {
     return;
   }
 
-  const todo = createTodo(title, desc, dueDate, priority);
+  const project = createProject(projectName)
+
+  const todo = createTodo(title, desc, dueDate, priority, project);
   addTodo(todo);
   form.reset();
 }
 
-export { checkTodo, deleteTodo, expandTodo, editTodo, makeTodo };
+function makeProject(projectName) {
+  const proj = createProject(projectName);
+  addProject(proj);
+}
+
+export { checkTodo, deleteTodo, expandTodo, editTodo, makeTodo, makeProject };

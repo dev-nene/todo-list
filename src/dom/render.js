@@ -1,10 +1,28 @@
 import { format } from "date-fns";
-import { getTodos } from "../storage/storage.js";
+import { getProjects, getTodos } from "../storage/storage.js";
 import { getFilteredTodos } from "./filter.js";
 
-function renderTodos(filter = "all") {
+function renderProjects() {
+  const projectSelect = document.querySelector(".project-select");
+  const projectButtonsDiv = document.querySelector(".project-buttons");
+  projectSelect.innerHTML = "";
+  projectButtonsDiv.innerHTML = "";
+  const projects = getProjects();
+  projects.forEach((proj) => {
+    const projOption = document.createElement("option");
+    projOption.textContent = proj.name;
+    projectSelect.appendChild(projOption);
+
+    const projBtn = document.createElement("button");
+    projBtn.textContent = proj.name;
+    projBtn.classList.add("side-project-btn")
+    projectButtonsDiv.appendChild(projBtn);
+  });
+}
+
+function renderTodos(filter = "all", project = "default") {
   const t = getTodos();
-  const todos = getFilteredTodos(t, filter)
+  const todos = getFilteredTodos(t, filter, project);
 
   const mainDiv = document.querySelector(".main");
 
@@ -20,7 +38,6 @@ function renderTodos(filter = "all") {
 
     const dueDate = document.createElement("p");
     dueDate.textContent = format(todo.dueDate, "yyyy-MM-dd");
-
 
     switch (todo.priority) {
       case "high":
@@ -71,4 +88,4 @@ function renderTodos(filter = "all") {
   });
 }
 
-export { renderTodos };
+export { renderTodos, renderProjects };

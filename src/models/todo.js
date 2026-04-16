@@ -1,5 +1,5 @@
-import { createProject } from "./project.js";
 import { getTodos, setTodos } from "../storage/storage.js";
+import { createProject } from "./project.js";
 
 let todos = getTodos();
 
@@ -23,7 +23,7 @@ function createTodo(
   desc,
   dueDate,
   priority,
-  projectName = "default",
+  project = createProject("default"),
   completed = false,
 ) {
   const id = crypto.randomUUID();
@@ -33,7 +33,7 @@ function createTodo(
     desc,
     dueDate,
     priority,
-    projectName,
+    project,
     completed,
   };
 }

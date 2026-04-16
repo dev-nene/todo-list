@@ -1,5 +1,5 @@
 import "./styles.css";
-import { renderTodos } from "./dom/render.js";
+import { renderProjects, renderTodos } from "./dom/render.js";
 import {
   initMainListener,
   initDialogListener,
@@ -9,4 +9,5 @@ import {
 initSideButtons();
 initMainListener();
 initDialogListener();
+renderProjects();
 renderTodos();

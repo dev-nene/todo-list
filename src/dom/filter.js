@@ -1,6 +1,6 @@
 import { isToday, isThisWeek, isThisMonth } from "date-fns";
 
-export function getFilteredTodos(todos, filter) {
+export function getFilteredTodos(todos, filter, projectName) {
   switch (filter) {
     case "completed":
       return todos.filter((todo) => todo.completed);
@@ -13,6 +13,9 @@ export function getFilteredTodos(todos, filter) {
 
     case "month":
       return todos.filter((todo) => isThisMonth(new Date(todo.dueDate)));
+
+    case "project":
+      return todos.filter((todo) => todo.project.name === projectName);
 
     default:
       return todos;

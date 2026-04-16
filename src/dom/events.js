@@ -1,5 +1,4 @@
-import { getTodos, setTodos } from "../storage/storage.js";
-import { addTodo, createTodo } from "../models/todo.js";
+import { getProjects, getTodos } from "../storage/storage.js";
 
 import {
   checkTodo,
@@ -7,10 +6,10 @@ import {
   expandTodo,
   editTodo,
   makeTodo,
+  makeProject,
 } from "./eventListeners.js";
 
-import { renderTodos } from "./render.js";
-import { getFilteredTodos } from "./filter.js";
+import { renderProjects, renderTodos } from "./render.js";
 
 function initMainListener() {
   const mainDiv = document.querySelector(".main");
@@ -65,25 +64,45 @@ function initDialogListener() {
 
 function initSideButtons() {
   document.querySelector(".all-todos-btn").addEventListener("click", () => {
-
     renderTodos("all");
   });
   document.querySelector(".today-btn").addEventListener("click", () => {
-
     renderTodos("today");
   });
   document.querySelector(".week-btn").addEventListener("click", () => {
-
     renderTodos("week");
   });
   document.querySelector(".month-btn").addEventListener("click", () => {
-
     renderTodos("month");
   });
   document.querySelector(".completed-btn").addEventListener("click", () => {
-    
     renderTodos("completed");
   });
+
+  const projectButtonsDiv = document.querySelector(".project-buttons");
+
+  projectButtonsDiv.addEventListener("click", (e) => {
+    const item = e.target.closest(".side-project-btn")
+    console.log("clicked:", item.textContent);
+    console.log("todos:", getTodos());
+    if(item) {
+      renderTodos("project", item.textContent)
+    }
+  })
+
+  document
+    .querySelector(".create-project-btn")
+    .addEventListener("click", () => {
+      const projects = getProjects();
+
+      const name = prompt("Project name:");
+      if (!name) return;
+
+      makeProject(name);
+      renderTodos();
+      renderProjects();
+      console.log(projects);
+    });
 }
 
 export { initMainListener, initDialogListener, initSideButtons };
