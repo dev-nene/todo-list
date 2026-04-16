@@ -7,4 +7,13 @@ function setTodos(todos) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-export { getTodos, setTodos };
+function getProjects() {
+  const project = JSON.parse(localStorage.getItem("project")) || [];
+  return project;
+}
+
+function setProjects(project) {
+  localStorage.setItem("project", JSON.stringify(project));
+}
+
+export { getTodos, setTodos, getProjects, setProjects };

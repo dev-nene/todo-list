@@ -1,72 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo</title>
-</head>
-<body>
-  <div class="container">
-    <div class="sidebar">
-      <div class="sidebar__user">
-        <h2>John</h2>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar__user">
+          <h2>John</h2>
+        </div>
 
-      <button class="addTodo-btn">Add Task</button>
-      <div class="sidebar_section">
-        <button class="all-todos-btn">All todos</button>
-      </div>
+        <button class="addTodo-btn">Add Task</button>
+        <div class="sidebar_section">
+          <button class="all-todos-btn">All todos</button>
+        </div>
 
-      <div class="sidebar_section">
-        <button class="today-btn">Today</button>
-        <button class="week-btn">This week</button>
-        <button class="month-btn">This month</button>
-      </div>
+        <div class="sidebar_section">
+          <button class="today-btn">Today</button>
+          <button class="week-btn">This week</button>
+          <button class="month-btn">This month</button>
+        </div>
 
-      <div class="sidebar_section">
-        <button class="completed-btn">Completed</button>
-      </div>
+        <div class="sidebar_section">
+          <button class="completed-btn">Completed</button>
+        </div>
 
-      <div class="sidebar_section">
-        <button>Default</button>
-        <button>Projects</button>
+        <div class="sidebar_section">
+        </div>
+        
+        <button class="create-project-btn">Create Project</button>
+        <div class="sidebar_section project-buttons">
+          
+        </div>
       </div>
+      <div class="main"></div>
+      <dialog class="todo-dialog">
+        <form method="dialog" class="todo-form">
+          <input type="text" id="title" name="title" placeholder="Title" />
+          <textarea
+            name="desc"
+            id="desc"
+            placeholder="Todo description"
+          ></textarea>
+          <input type="date" name="dueDate" id="dueDate" />
 
+          <select name="project" id="project" class="project-select"></select>
+
+          <select name="priority" id="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+          </select>
+
+          <button type="submit" class="create-btn">Create</button>
+          <button type="button" class="cancel-btn">Cancel</button>
+        </form>
+      </dialog>
+
+      <dialog class="edit-dialog">
+        <form method="dialog" class="edit-form">
+          <input type="text" id="edit-title" name="title" placeholder="Title" />
+          <textarea
+            name="desc"
+            id="edit-desc"
+            placeholder="Todo description"
+          ></textarea>
+          <input type="date" name="dueDate" id="edit-dueDate" />
+
+          <select name="priority" id="edit-priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+          </select>
+
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" class="edit-cancel-btn">Cancel</button>
+        </form>
+      </dialog>
     </div>
-    <div class="main"></div>
-    <dialog class="todo-dialog">
-      <form method="dialog" class="todo-form">
-        <input type="text" id="title" name="title" placeholder="Title">
-        <textarea name="desc" id="desc" placeholder="Todo description"></textarea>
-        <input type="date" name="dueDate" id="dueDate">
-
-        <select name="priority" id="priority">
-          <option value="low">low</option>
-          <option value="medium">medium</option>
-          <option value="high">high</option>
-        </select>
-
-        <button type="submit" class="create-btn">Create</button>
-        <button type="button" class="cancel-btn">Cancel</button>
-      </form>
-    </dialog>
-
-    <dialog class="edit-dialog">
-      <form method="dialog" class="edit-form">
-        <input type="text" id="edit-title" name="title" placeholder="Title">
-        <textarea name="desc" id="edit-desc" placeholder="Todo description"></textarea>
-        <input type="date" name="dueDate" id="edit-dueDate">
-
-        <select name="priority" id="edit-priority">
-          <option value="low">low</option>
-          <option value="medium">medium</option>
-          <option value="high">high</option>
-        </select>
-
-        <button type="submit" class="save-btn">Save</button>
-        <button type="button" class="edit-cancel-btn">Cancel</button>
-      </form>
-    </dialog>
-  </div>
-</body>
+  </body>
 </html>
