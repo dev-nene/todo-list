@@ -1,4 +1,4 @@
-import { getTodos } from "../storage/storage.js";
+import { getTodos, setTodos } from "../storage/storage.js";
 import { addTodo, createTodo } from "../models/todo.js";
 
 import {
@@ -10,6 +10,7 @@ import {
 } from "./eventListeners.js";
 
 import { renderTodos } from "./render.js";
+import { getFilteredTodos } from "./filter.js";
 
 function initMainListener() {
   const mainDiv = document.querySelector(".main");
@@ -55,7 +56,6 @@ function initDialogListener() {
   createBtn.addEventListener("click", () => {
     makeTodo();
     renderTodos();
-
   });
 
   cancelBtn.addEventListener("click", () => {
@@ -63,4 +63,27 @@ function initDialogListener() {
   });
 }
 
-export { initMainListener, initDialogListener };
+function initSideButtons() {
+  document.querySelector(".all-todos-btn").addEventListener("click", () => {
+
+    renderTodos("all");
+  });
+  document.querySelector(".today-btn").addEventListener("click", () => {
+
+    renderTodos("today");
+  });
+  document.querySelector(".week-btn").addEventListener("click", () => {
+
+    renderTodos("week");
+  });
+  document.querySelector(".month-btn").addEventListener("click", () => {
+
+    renderTodos("month");
+  });
+  document.querySelector(".completed-btn").addEventListener("click", () => {
+    
+    renderTodos("completed");
+  });
+}
+
+export { initMainListener, initDialogListener, initSideButtons };

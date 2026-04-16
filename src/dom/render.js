@@ -1,8 +1,11 @@
 import { format } from "date-fns";
 import { getTodos } from "../storage/storage.js";
+import { getFilteredTodos } from "./filter.js";
 
-function renderTodos(projectName = "default") {
-  const todos = getTodos();
+function renderTodos(filter = "all") {
+  const t = getTodos();
+  const todos = getFilteredTodos(t, filter)
+
   const mainDiv = document.querySelector(".main");
 
   mainDiv.innerHTML = "";
